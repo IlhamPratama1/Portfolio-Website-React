@@ -2,23 +2,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  @font-face {
-    font-family: 'MADE Soulmaze';
-    font-weight: 'normal';
-    src:url('./fonts/made.otf') format("opentype"),
-        url('./fonts/made-italic.otf') format("opentype");
-  }
-  @font-face {
-    font-family: 'Zefani_Demo';
-    font-weight: 'normal';
-    src: url('./fonts/zefani.otf') format("opentype");
-  }
-  @font-face {
-    font-family: 'Geomanist';
-    font-weight: 'normal';
-    src:url('./fonts/geomanist.woff') format("woff"),
-        url('./fonts/geomanist-italic.woff') format("woff");
-  }
-}
