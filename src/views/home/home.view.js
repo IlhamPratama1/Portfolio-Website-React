@@ -135,8 +135,8 @@ export default function HomeView() {
                             <div className="h-px w-20 bg-gray"></div>
                             <p className="uppercase font-geo text-xs lg:text-xl text-red">now you see</p>
                         </div>
-                        <h1 className="w-100 lg:w-108 font-zefani uppercase text-4xl lg:text-7xl text-white">all project showcase overview</h1>
-                        <p className="text-gray text-xs lg:text-lg font-geo uppercase w-82 lg:w-108 leading-tight lg:leading-tight tracking-wide">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                        <h1 className="w-80 lg:w-108 font-zefani uppercase text-4xl lg:text-7xl text-white">all project showcase overview</h1>
+                        <p className="text-gray text-xs lg:text-lg font-geo uppercase w-80 lg:w-108 leading-tight lg:leading-tight tracking-wide">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                         <div className="grid grid-cols-4 gap-4">
                             {images.map((img, i) => {
                                 return(
@@ -169,8 +169,8 @@ export default function HomeView() {
                     </div>
                     <FadeInWhenVisible>
                         <div className="mt-4 lg:mt-0 mx-6 lg:mx-28 space-y-3 lg:space-y-10">
-                            <h1 className="w-100 lg:w-108 font-zefani uppercase text-4xl lg:text-7xl text-white">project list</h1>
-                            <p className="text-gray text-xs lg:text-lg font-geo uppercase w-82 lg:w-102 leading-tight lg:leading-tight tracking-wide">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                            <h1 className="w-80 lg:w-108 font-zefani uppercase text-4xl lg:text-7xl text-white">project list</h1>
+                            <p className="text-gray text-xs lg:text-lg font-geo uppercase w-80 lg:w-102 leading-tight lg:leading-tight tracking-wide">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                         </div>
                     </FadeInWhenVisible>
                 </div>
@@ -198,7 +198,7 @@ export default function HomeView() {
             {/* section 3 */}
             <div className="h-100 space-y-6">
                 <div className="circle">
-                    <div className="hidden lg:flex justify-end -mb-28 mx-24">
+                    <div className="hidden lg:flex justify-end -mb-28 px-24">
                         <div className="flex items-center rounded-full p-auto w-40 h-40 bg-purple mix-blend-difference before:bg-black after:bg-black text-black font-geo uppercase">
                             <div className="mx-auto space-y-3">
                                 <p className="text-center text-5xl">3/3</p>
