@@ -26,7 +26,7 @@ module.exports = {
     }),
     extend: {
       width: {
-        '81': '16rem',
+        '81': '18rem',
         '82': '23rem',
         '108': '54rem',
         '102': '40rem',

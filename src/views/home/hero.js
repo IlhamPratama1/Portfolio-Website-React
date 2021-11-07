@@ -120,7 +120,7 @@ export default function HeroView() {
                             <p className="">INA</p>
                             <p className="">GMT 7: 23:56:59</p>
                         </div>
-                        <div className="w-96 lg:w-108 space-y-2">
+                        <div className="w-100 lg:w-108 space-y-2">
                             <div className="flex justify-between">
                                 <p className="text-gray text-sm lg:text-lg font-geo uppercase w-81 lg:w-82 leading-tight lg:leading-tight tracking-wide">WEB DEVELOPER & GAME DEVELOPER WITH 2 YEARS EXPERIENCET BASED IN KEDIRI</p>
                                 <p className="px-2 pt-1 lg:pt-2 bg-black-s text-purple uppercase font-geo italic text-md lg:text-lg">ina</p>

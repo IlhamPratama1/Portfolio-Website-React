@@ -135,7 +135,7 @@ export default function HomeView() {
                             <div className="h-px w-20 bg-gray"></div>
                             <p className="uppercase font-geo text-xs lg:text-xl text-red">now you see</p>
                         </div>
-                        <h1 className="w-96 lg:w-108 font-zefani uppercase text-4xl lg:text-7xl text-white">all project showcase overview</h1>
+                        <h1 className="w-100 lg:w-108 font-zefani uppercase text-4xl lg:text-7xl text-white">all project showcase overview</h1>
                         <p className="text-gray text-xs lg:text-lg font-geo uppercase w-82 lg:w-108 leading-tight lg:leading-tight tracking-wide">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
                         <div className="grid grid-cols-4 gap-4">
                             {images.map((img, i) => {
