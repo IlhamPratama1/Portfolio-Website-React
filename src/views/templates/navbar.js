@@ -35,7 +35,7 @@ export default function Navbar() {
         <motion.div
             initial="initial"
             animate="enter"
-            variants={container} className={`relative w-full z-10 header px-10 lg:px-28 pt-16 flex justify-between ${styleColor} text-xs lg:text-sm tracking-wider`}>
+            variants={container} className={`relative w-full z-20 header px-10 lg:px-28 pt-16 flex justify-between ${styleColor} text-xs lg:text-sm tracking-wider`}>
             <Link to="/" variants={item} className="font-made tracking-widest uppercase">Hamka</Link>
             <Link to="/menu" variants={item} className={`font-geo leading-tight tracking-wider hover:underline hover:font-bold ${styleColor2} uppercase pl-4`}>Menu</Link>
         </motion.div>

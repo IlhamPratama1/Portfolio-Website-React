@@ -19,11 +19,8 @@ export default function HeroView() {
         let lastMousePos = {x: 0, y: 0};
         let cacheMousePos = {x: 0, y: 0};
         const MathUtils = {
-            // linear interpolation
             lerp: (a, b, n) => (1 - n) * a + n * b,
-            // distance between two points
             distance: (x1,y1,x2,y2) => Math.hypot(x2-x1, y2-y1),
-            // Random float
             getRandomFloat: (min, max) => (Math.random() * (max - min) + min).toFixed(2)
         }
         let mousePos = lastMousePos = cacheMousePos = {x: 0, y: 0};
@@ -52,36 +49,51 @@ export default function HeroView() {
             return {x: posx, y: posy};
         }
 
-        function showImage() {
-            const imageShow = imageRefs.current[index];
-            
-            gsap.timeline()
-            .set(imageShow, {
-                opacity: 1,
-                scaleX: 1,
-                scaleY: 1,
-                zIndex: zIndex,
-                x: mousePos.x - imageShow.clientWidth/2,
-                y: mousePos.y - imageShow.clientHeight/2,
-                transformOrigin: '50% -10%'
-            }, 0)
-            .to(imageShow, {
-                opacity: 0
-            }, 1);
-        }
-
         hero.current.addEventListener('mousemove', ev => { 
             mousePos = getMousePos(ev);
-            let distance = getMouseDistance();
-            if ( distance > 100 ) {
-                showImage();
+            const imageShow = imageRefs.current[index];
+
+            if ( getMouseDistance() > 100 && !gsap.isTweening(imageShow)) {
+            
+                gsap.timeline()
+                .set(imageShow, {
+                    startAt: {opacity: 0},
+                    opacity: 1,
+                    scaleX: 1,
+                    scaleY: 1,
+                    zIndex: zIndex,
+                    x: mousePos.x - imageShow.width/2,
+                    y: mousePos.y - imageShow.height/2,
+                    transformOrigin: '50% -10%'
+                }, 0)
+                // then make it disappear
+                .to(imageShow, {
+                    duration: 0.5,
+                    ease: "power1.easeOut",
+                    opacity: 0
+                }, 0.4)
+                // translate down the image
+                .to(imageShow, {
+                    duration: 0.2,
+                    ease: "quad.easeIn",
+                    scaleX: 0.5,
+                    scaleY: 2
+                }, 0.4)
+                // translate down the image
+                .to(imageShow, {
+                    duration: 0.5,
+                    ease: "expo.easeOut",
+                    scaleX: 0.7,
+                    scaleY: 1.7,
+                    y: `+=${MathUtils.getRandomFloat(hero.height/2,hero.height)}`
+                }, 0.6);
+
                 zIndex = zIndex < 20 ? zIndex + 1 : 10;
                 index = index < imageTotal - 1 ? index + 1 : 0;
                 lastMousePos = mousePos;
-                console.log(index);
-                requestAnimationFrame(() => showImage());
             }
         });
+        
     }, []);
 
     return(
@@ -94,11 +106,19 @@ export default function HeroView() {
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/3.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/4.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/5.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/6.png" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/7.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/9.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/10.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/1.png" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/2.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/3.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/4.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/5.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/6.png" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/7.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/9.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/10.jpg" />
                 </div>
                 <div className="px-6 lg:px-28 my-20 relative z-20">
                     <div className="flex items-end space-x-4 lg:space-x-40">

@@ -9,12 +9,12 @@ import { AnimateSharedLayout } from "framer-motion";
 import MenuView from "./views/menu/menu.view";
 import GameView from "./views/game/game.view";
 import AboutView from "./views/about/about.view";
+import LoadingPage from "./views/loading/loadingPage";
 import CustomCursor from 'custom-cursor-react';
 import 'custom-cursor-react/dist/index.css';
 
 function App() {
   return (
-    <div className="App">
       <Router>
         <React.StrictMode>
           <CustomCursor
@@ -38,11 +38,11 @@ function App() {
               <Route path="/project/website" element={<WebsiteView />} />
               <Route path="/contact" element={<ContactView />} />
               <Route path="/about" element={<AboutView />} />
+              <Route path="/loading" element={<LoadingPage />} />
             </Routes>
           </AnimateSharedLayout>
         </React.StrictMode>
       </Router>
-    </div>
   );
 }
 
