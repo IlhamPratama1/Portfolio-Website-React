@@ -7,26 +7,100 @@ import { gsap } from "gsap";
 
 export default function HeroView() {
     const hero = useRef();
-    const MathUtils = {
-        // linear interpolation
-        lerp: (a, b, n) => (1 - n) * a + n * b,
-        // distance between two points
-        distance: (x1,y1,x2,y2) => Math.hypot(x2-x1, y2-y1),
-        // Random float
-        getRandomFloat: (min, max) => (Math.random() * (max - min) + min).toFixed(2)
-    }
+    const imageRefs = useRef([]);
+    imageRefs.current = [];
 
+    const addToImage = el => {
+        if (el && !imageRefs.current.includes(el)) {
+            imageRefs.current.push(el);
+        }
+    };
     useEffect(() => {
-        hero.current.addEventListener('mousemove', (e) => {
-            console.log("move");
-        })
-    });
+        let lastMousePos = {x: 0, y: 0};
+        let cacheMousePos = {x: 0, y: 0};
+        const MathUtils = {
+            // linear interpolation
+            lerp: (a, b, n) => (1 - n) * a + n * b,
+            // distance between two points
+            distance: (x1,y1,x2,y2) => Math.hypot(x2-x1, y2-y1),
+            // Random float
+            getRandomFloat: (min, max) => (Math.random() * (max - min) + min).toFixed(2)
+        }
+        let mousePos = lastMousePos = cacheMousePos = {x: 0, y: 0};
+        const getMouseDistance = () => MathUtils.distance(mousePos.x,mousePos.y,lastMousePos.x,lastMousePos.y);
+
+        let index = 0;
+        let imageTotal = imageRefs.current.length;
+        let zIndex = 10;
+        
+        cacheMousePos.x = MathUtils.lerp(cacheMousePos.x || mousePos.x, mousePos.x, 0.1);
+        cacheMousePos.y = MathUtils.lerp(cacheMousePos.y || mousePos.y, mousePos.y, 0.1);
+
+        
+        const getMousePos = (ev) => {
+            let posx = 0;
+            let posy = 0;
+            if (!ev) ev = hero.event;
+            if (ev.pageX || ev.pageY) {
+                posx = ev.pageX;
+                posy = ev.pageY;
+            }
+            else if (ev.clientX || ev.clientY) 	{
+                posx = ev.clientX + document.body.scrollLeft + hero.current.scrollLeft;
+                posy = ev.clientY + document.body.scrollTop + hero.current.scrollTop;
+            }
+            return {x: posx, y: posy};
+        }
+
+        function showImage() {
+            const imageShow = imageRefs.current[index];
+            
+            gsap.timeline()
+            .set(imageShow, {
+                opacity: 1,
+                scaleX: 1,
+                scaleY: 1,
+                zIndex: zIndex,
+                x: mousePos.x - imageShow.clientWidth/2,
+                y: mousePos.y - imageShow.clientHeight/2,
+                transformOrigin: '50% -10%'
+            }, 0)
+            .to(imageShow, {
+                opacity: 0
+            }, 1);
+        }
+
+        hero.current.addEventListener('mousemove', ev => { 
+            mousePos = getMousePos(ev);
+            let distance = getMouseDistance();
+            if ( distance > 100 ) {
+                showImage();
+                zIndex = zIndex < 20 ? zIndex + 1 : 10;
+                index = index < imageTotal - 1 ? index + 1 : 0;
+                lastMousePos = mousePos;
+                console.log(index);
+                requestAnimationFrame(() => showImage());
+            }
+        });
+    }, []);
 
     return(
         <div className="lg:h-screen">
             <Navbar />
             <motion.div ref={hero} initial="exit" animate="enter" variants={backVariants} className="hero relative z-10">
-                <div className="px-6 lg:px-28 my-20">
+                <div>
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/1.png" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/2.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/3.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/4.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/5.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/1.png" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/2.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/3.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/4.jpg" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/5.jpg" />
+                </div>
+                <div className="px-6 lg:px-28 my-20 relative z-20">
                     <div className="flex items-end space-x-4 lg:space-x-40">
                         <div className="hidden lg:block space-y-0 text-gray text-md lg:text-lg font-geo uppercase">
                             <p className="">INA</p>
