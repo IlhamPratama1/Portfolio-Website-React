@@ -1,119 +1,31 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../templates/navbar';
-import Particles from "react-tsparticles";
 import './particles.css';
 import { motion } from "framer-motion";
 import { backVariants } from '../../animation/pageTransition';
+import { gsap } from "gsap";
 
 export default function HeroView() {
+    const hero = useRef();
+    const MathUtils = {
+        // linear interpolation
+        lerp: (a, b, n) => (1 - n) * a + n * b,
+        // distance between two points
+        distance: (x1,y1,x2,y2) => Math.hypot(x2-x1, y2-y1),
+        // Random float
+        getRandomFloat: (min, max) => (Math.random() * (max - min) + min).toFixed(2)
+    }
+
+    useEffect(() => {
+        hero.current.addEventListener('mousemove', (e) => {
+            console.log("move");
+        })
+    });
+
     return(
         <div className="lg:h-screen">
             <Navbar />
-            <Particles
-                id="tsparticles"
-                style={{ 
-                    position: 'absolute',
-                    zIndex: 0
-                }}
-                options={{
-                    detectRetina: false,
-                    interactivity: {
-                        detectsOn: "canvas",
-                        events: {
-                            onHover: {
-                                enable: true,
-                                mode: "bubble"
-                            },
-                            resize: true
-                        },
-                        modes: {
-                            bubble: {
-                                distance: 40,
-                                duration: 2,
-                                opacity: 8,
-                                size: 7.5,
-                                speed: 3
-                            }
-                        }
-                    },
-                    particles: {
-                        color: {
-                            value: "#ff0000",
-                        },
-                        lineLinked: {
-                            blink: false,
-                            color: "random",
-                            consent: false,
-                            distance: 30,
-                            enable: true,
-                            opacity: 0.4,
-                            width: 0.75
-                        },
-                        move: {
-                            attract: {
-                                enable: false,
-                                rotate: {
-                                    x: 600,
-                                    y: 1200
-                                }
-                            },
-                            bounce: false,
-                            direction: "none",
-                            enable: true,
-                            outMode: "bounce",
-                            random: true,
-                            speed: 0.75,
-                            straight: false
-                        },
-                        number: {
-                            density: {
-                                enable: false,
-                                area: 1000
-                            },
-                            limit: 0,
-                            value: 75
-                        },
-                        opacity: {
-                            animation: {
-                                enable: true,
-                                minimumValue: 0.05,
-                                speed: 2,
-                                sync: false
-                            },
-                            random: false,
-                            value: 2
-                        },
-                        shape: {
-                            type: "circle"
-                        },
-                        size: {
-                            animation: {
-                                enable: false,
-                                minimumValue: 0.1,
-                                speed: 40,
-                                sync: false
-                            },
-                            random: true,
-                            value: 3
-                        }
-                    },
-                    polygon: {
-                        draw: {
-                            enable: true,
-                            lineColor: "rgba(255,255,255,0.25)",
-                            lineWidth: 0.5
-                        },
-                        move: {
-                            radius: 10
-                        },
-                        inlineArrangement: "equidistant",
-                        scale: 0.9,
-                        type: "inline",
-                        url: "https://particles.js.org/images/smalldeer.svg"
-                    }
-                }}
-                />
-            <motion.div initial="exit" animate="enter" variants={backVariants} className="hero relative z-10">
+            <motion.div ref={hero} initial="exit" animate="enter" variants={backVariants} className="hero relative z-10">
                 <div className="px-6 lg:px-28 my-20">
                     <div className="flex items-end space-x-4 lg:space-x-40">
                         <div className="hidden lg:block space-y-0 text-gray text-md lg:text-lg font-geo uppercase">
