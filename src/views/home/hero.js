@@ -106,7 +106,7 @@ export default function HeroView() {
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/3.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/4.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/5.jpg" />
-                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/6.png" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/6.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/7.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/9.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/10.jpg" />
@@ -115,7 +115,7 @@ export default function HeroView() {
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/3.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/4.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/5.jpg" />
-                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/6.png" />
+                    <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/6.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/7.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/9.jpg" />
                     <img ref={addToImage} className="opacity-0 z-10 absolute w-52 transform -translate-x-1/2 -translate-y-1/2" alt="menu" src="/static/images/10.jpg" />
